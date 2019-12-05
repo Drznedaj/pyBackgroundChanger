@@ -14,7 +14,7 @@ i+=1
 with open('num.txt','w') as outf:
 	outf.write(str(i))
 
-pic_ = 'background changer\\Pic_of_the_day.png'
+pic_ = 'pyBackgroundChanger\\Pic_of_the_day.png'
 pic_path = os.path.join(os.path.join(os.environ["USERPROFILE"], "Desktop"), pic_)
 exp_path = os.path.join(os.path.join(os.environ["USERPROFILE"], "Desktop"), 'Explanation.txt')
 
