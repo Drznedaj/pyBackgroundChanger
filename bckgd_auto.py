@@ -32,14 +32,14 @@ parser = MyHTMLParser()
 with open('Url_to_parse.txt', 'r') as inF:  # finding the rest of the url of the picture in the file
     for line in inF:  # and feeds lines to a html parser to get the explanation
         parser.feed(line)  # of the picture
-        if not picture is 'https://apod.nasa.gov/apod/':
+        if (picture != 'https://apod.nasa.gov/apod/'):
             continue
         elif '.png' in line:
-            x = line[9:-3]  # this just gets the url without the html tags
+            x = line.split('\"')[1]  # this just gets the url without the html tags
             picture += x
             print(picture)
         elif '.jpg' in line:
-            x = line[9:-3]  # this just gets the url without the html tags
+            x = line.split('\"')[1]  # this just gets the url without the html tags
             picture += x
             print(picture)
             # break
