@@ -3,20 +3,21 @@ import ctypes
 import os
 
 i = 0
+dir_path = os.path.dirname(os.path.abspath(__file__))
+base_path = os.path.split(dir_path)[0]
 
-with open('num.txt', 'r') as inf:
-    for chr in inf:
-        if chr >= '0' and chr <= '9':
-            i = int(chr)
-            print(i)
+for top, _, files in os.walk(dir_path):
+    for f in files:
+        if '.png' in f or '.jpg' in f:
+            num = int(f.split('.')[0])
+            if num > i:
+                i = num
 
 i += 1
+print('Saving favourite picture number: {}'.format(i))
 
-with open('num.txt', 'w') as outf:
-    outf.write(str(i))
-
-pic_ = 'picOday\\pyBackgroundChanger\\Pic_of_the_day.png'
-pic_path = os.path.join(os.path.split(os.path.dirname(os.path.abspath(__file__)))[0], pic_)
+pic_ = 'Pic_of_the_day.png'
+pic_path = os.path.join(base_path, pic_)
 exp_path = os.path.join(os.path.join(os.environ["USERPROFILE"], "Desktop"), 'Explanation.txt')
 
 im = Image.open(pic_path)

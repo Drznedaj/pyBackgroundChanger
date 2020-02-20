@@ -16,7 +16,7 @@ explntn_path = os.path.join(os.path.join(os.environ["USERPROFILE"], "Desktop"), 
 class MyHTMLParser(HTMLParser):
     def handle_data(self, data):
         global outs
-        outs += data
+        outs += data + '\n'
 
 
 parser = MyHTMLParser()
