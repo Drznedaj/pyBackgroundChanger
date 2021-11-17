@@ -1,5 +1,4 @@
 from PIL import Image
-import ctypes
 import os
 
 i = 0
@@ -9,11 +8,8 @@ base_path = os.path.split(dir_path)[0]
 for top, _, files in os.walk(dir_path):
     for f in files:
         if '.png' in f or '.jpg' in f:
-            num = int(f.split('.')[0])
-            if num > i:
-                i = num
+            i = int(f.split('.')[0])
 
-i += 1
 print('Saving favourite picture number: {}'.format(i))
 
 pic_ = 'Pic_of_the_day.png'
