@@ -19,11 +19,12 @@ print(f'Saving favourite picture number: {maximum_pic_num}')
 pic_ = 'Pic_of_the_day.png'
 pic_path = os.path.join(base_path, pic_)
 exp_path = os.path.join(os.path.join(os.environ["USERPROFILE"], "Desktop"), 'Explanation.txt')
+end_pic_path = os.path.join(dir_path, str(maximum_pic_num))
 
 im = Image.open(pic_path)
-im.save(f'{maximum_pic_num}.png', 'png')
+im.save(f'{end_pic_path}.png', 'png')
 
 with open(exp_path, 'r') as inf:
-    with open(f'{maximum_pic_num}_explanation.txt', 'w') as outf:
+    with open(f'{end_pic_path}_explanation.txt', 'w') as outf:
         for line in inf:
             outf.write(line)
