@@ -3,6 +3,7 @@ import itertools
 import threading
 import time
 import sys
+import codecs
 import urllib.request as ur
 from urllib.error import HTTPError
 from bs4 import BeautifulSoup
@@ -28,7 +29,7 @@ def save_pictrure(soup: BeautifulSoup, picture_prefix: str):
     picture_suffix = picture_suffix if picture_suffix else ''
 
     picture_url = f'{picture_prefix}{picture_suffix}'
-    print(f'\n{picture_url}')
+    print(f'\r{picture_url}')
 
     # this is a url of a picture of lower quality if we get an error
     # downloading the first one we can try this one
@@ -47,13 +48,15 @@ done = False
 
 
 def animate():
+    if sys.stdout.encoding != 'UTF-8':
+        sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
     for c in itertools.cycle(["⢿", "⣻", "⣽", "⣾", "⣷", "⣯", "⣟", "⡿"]):
         if done:
             break
         sys.stdout.write(f'\rloading {c}')
         sys.stdout.flush()
         time.sleep(0.1)
-    sys.stdout.write('\rDownload complete!     ')
+    sys.stdout.write('\rDownload complete!')
 
 
 if __name__ == '__main__':
